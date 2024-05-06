@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>날씨 요소별 정확도</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+  <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    div {
+        width: 800px;
+        height: 500px;
+    }
+  </style> 
+</head>
+<body>
+  <select id="dataSelect">
+    <option value="data1">강수량</option>
+    <option value="data2">운량</option>
+    <option value="data3">습도</option>
+  </select>
+  <div>
+    <canvas id="lineChart" width="800" height="500"></canvas>
+  </div>
+
+  <script>
+
+    const data = {
+      data1: [10, 20, 30, 40, 50, 12, 54, 63, 81, 45, 57, 16],
+      data2: [50, 40, 30, 20, 10, 65, 42, 13, 48, 96, 70, 50],
+      data3: [20, 30, 40, 30, 20, 10, 56, 89, 75, 60, 42, 30]
+    };
+
+    const options = {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+    };
+
+    const chart = new Chart(document.getElementById('lineChart'), {
+      type: 'line',
+      data: {
+        labels: ['1', '2', '3', '4', '5','6','7','8','9','10','11','12'],
+        datasets: [{
+          label: '선택된 데이터',
+          data: [],
+          backgroundColor: 'rgba(100, 100, 160, 0.2)',
+          borderColor: 'rgba(100, 100, 160, 0.2)',
+          borderWidth: 3,
+          order: 2,
+          tension: 0.4,
+          fill: true
+        }]
+      },
+      options: options
+    });
+
+    // Select 태그 변경 시 차트 업데이트
+    document.getElementById('dataSelect').addEventListener('change', function() {
+      const selectedData = data[this.value];
+      chart.data.datasets[0].data = selectedData;
+      chart.update();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kisskisskiss</title>
+
+    <style>
+        .container {
+            font-family: arial;
+            font-size: 30px;
+
+            justify-content: center;
+            display: flex;
+            
+            
+        }
+        
+        .hit {
+            justify-content: center;
+            
+        }
+
+    </style>
+
+    <script>
+        function hithim(){
+            document.getElementById("kasa").src = "./2.jpg"
+        }
+        function normal(){
+            document.getElementById("kasa").src = "./1.jpg"
+        }
+    </script>
+</head>
+<body oncontextmenu="return false">
+    
+    <div class="container">
+       
+        <div class="hit">
+            <h1>Kiss the naru ♥</h1>
+            <button type="button" onmousedown="hithim()" onmouseup="normal()">
+            </button>
+            <img id="kasa" src="./1.jpg">
+        </div>
+      </div>
+      
+    
+    
+</body>
+</html>
